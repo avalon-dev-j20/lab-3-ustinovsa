@@ -55,7 +55,7 @@
 
 #### Интерфейс приложения 
 
-![Интерфейс приложения "Цветовая палитра"](./UI Prototypes/Color Picker.png)
+![Интерфейс приложения "Цветовая палитра"](https://raw.githubusercontent.com/avalon-dev-j20/lab-3/master/UI%20Prototypes/Color%20Picker.png)
 
 #### Требования к приложению
 
@@ -171,7 +171,7 @@ public class ClipboardExample extends JFrame {
 
 #### Интерфейс приложения
 
-![Интерфейс приложения "Калькулятор"](./UI Prototypes/Calculator.png)
+![Интерфейс приложения "Калькулятор"](https://raw.githubusercontent.com/avalon-dev-j20/lab-3/master/UI%20Prototypes/Calculator.png)
 
 #### Требования к приложению
 
