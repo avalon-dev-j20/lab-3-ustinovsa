@@ -6,7 +6,6 @@
 package Lab3.Calculator;
 
 import java.awt.Dimension;
-import java.awt.event.WindowStateListener;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 
@@ -14,12 +13,11 @@ import javax.swing.JFrame;
  *
  * @author Home
  */
-public class CalcFrame extends JFrame {
 
+public class CalcFrame extends JFrame{
     private static int MINWIDTH = 300;
     private static int MINHEIGHT = 400;
-
-    public CalcFrame() {
+    public CalcFrame(){
         setTitle("KALKULATORRRRR");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
@@ -29,4 +27,5 @@ public class CalcFrame extends JFrame {
         add(cp);
         pack();
     }
+    
 }
