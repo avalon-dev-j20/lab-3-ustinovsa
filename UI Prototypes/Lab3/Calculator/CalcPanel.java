@@ -21,35 +21,28 @@ import javax.swing.JTextArea;
  * @author Home
  */
 public class CalcPanel extends JPanel {
+
     static JLabel display;
     static JTextArea history;
+    static double result;
+    static String lastAct = "=";
     private JPanel numPad;
     private GridBagConstraints gbc;
     private Insets insets;
     private JButton button;
-    static double result;
-    
-    
-    
-    String[] commandButtons = {"CE", "/", "*", "-", "+", "="};
-    
-    
+    private String[] commandButtons = {"CE", "/", "*", "-", "+", "="};
     private int panelsWidth = 300;
     private int displayHeight = 50;
-    private int numPadHeight = 450;
     
-    
-    
-    
-    public CalcPanel(){
+    public CalcPanel() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         createDisplay();
         add(display);
         createNumPad();
         add(numPad);
     }
-    
-    private JPanel createDisplay(){
+
+    private JPanel createDisplay() {
         JPanel displayPanel = new JPanel();
         displayPanel.setLayout(new BoxLayout(displayPanel, BoxLayout.Y_AXIS));
         history = new JTextArea();
@@ -61,9 +54,9 @@ public class CalcPanel extends JPanel {
         display.setText("0");
         add(display);
         return displayPanel;
-        }
-    
-    public JPanel createNumPad(){
+    }
+
+    public JPanel createNumPad() {
         numPad = new JPanel(new GridBagLayout());
         insets = new Insets(5, 5, 5, 5);
         gbc = new GridBagConstraints();
@@ -77,70 +70,84 @@ public class CalcPanel extends JPanel {
         CommandListener cl = new CommandListener();
         InputListener il = new InputListener();
         DotListener dl = new DotListener();
-        
-        
-        for(int i=0; i<11; i++){
-            switch(i){
-                case 0: gbc.gridx = 0;
-                        gbc.gridy = 4;
-                        gbc.gridwidth = 2;
-                        break;
-                case 1: gbc.gridx = 0;
-                        gbc.gridy = 3;
-                        gbc.gridwidth = 1;
-                        break;
-                case 2: gbc.gridx = 1;
-                        gbc.gridy = 3;
-                        break;
-                case 3: gbc.gridx = 2;
-                        gbc.gridy = 3;
-                        break;
-                case 4: gbc.gridx = 0;
-                        gbc.gridy = 2;
-                        break;
-                case 5: gbc.gridx = 1;
-                        gbc.gridy = 2;
-                        break;
-                case 6: gbc.gridx = 2;
-                        gbc.gridy = 2;
-                        break;
-                case 7: gbc.gridx = 0;
-                        gbc.gridy = 1;
-                        break;
-                case 8: gbc.gridx = 1;
-                        gbc.gridy = 1;
-                        break;
-                case 9: gbc.gridx = 2;
-                        gbc.gridy = 1;
-                        break;
-                        
+
+        for (int i = 0; i < 11; i++) {
+            switch (i) {
+                case 0:
+                    gbc.gridx = 0;
+                    gbc.gridy = 4;
+                    gbc.gridwidth = 2;
+                    break;
+                case 1:
+                    gbc.gridx = 0;
+                    gbc.gridy = 3;
+                    gbc.gridwidth = 1;
+                    break;
+                case 2:
+                    gbc.gridx = 1;
+                    gbc.gridy = 3;
+                    break;
+                case 3:
+                    gbc.gridx = 2;
+                    gbc.gridy = 3;
+                    break;
+                case 4:
+                    gbc.gridx = 0;
+                    gbc.gridy = 2;
+                    break;
+                case 5:
+                    gbc.gridx = 1;
+                    gbc.gridy = 2;
+                    break;
+                case 6:
+                    gbc.gridx = 2;
+                    gbc.gridy = 2;
+                    break;
+                case 7:
+                    gbc.gridx = 0;
+                    gbc.gridy = 1;
+                    break;
+                case 8:
+                    gbc.gridx = 1;
+                    gbc.gridy = 1;
+                    break;
+                case 9:
+                    gbc.gridx = 2;
+                    gbc.gridy = 1;
+                    break;
             }
             button = new JButton(Integer.toString(i));
             button.addActionListener(il);
-            numPad.add(button, gbc);            
-            };
-        
-        for(String i:commandButtons){
-            switch (i){
-                case "CE": gbc.gridx = 0;
-                           gbc.gridy = 0;
+            numPad.add(button, gbc);
+        };
+
+        for (String i : commandButtons) {
+            switch (i) {
+                case "CE":
+                    gbc.gridx = 0;
+                    gbc.gridy = 0;
                     break;
-                case "/": gbc.gridx = 1;
-                          gbc.gridy = 0;
-                    break;   
-                case "*": gbc.gridx = 2;
-                          gbc.gridy = 0;
-                    break; 
-                case "-": gbc.gridx = 3;
-                          gbc.gridy = 0;
-                    break;    
-                case "+": gbc.gridx = 3;
-                          gbc.gridy = 1;
-                          gbc.gridheight = 2;
-                    break;    
-                case "=": gbc.gridx = 3;
-                          gbc.gridy = 3;
-                    break;    
+                case "/":
+                    gbc.gridx = 1;
+                    gbc.gridy = 0;
+                    break;
+                case "*":
+                    gbc.gridx = 2;
+                    gbc.gridy = 0;
+                    break;
+                case "-":
+                    gbc.gridx = 3;
+                    gbc.gridy = 0;
+                    break;
+                case "+":
+                    gbc.gridx = 3;
+                    gbc.gridy = 1;
+                    gbc.gridheight = 2;
+                    break;
+                case "=":
+                    gbc.gridx = 3;
+                    gbc.gridy = 3;
+                    break;
             }
             button = new JButton(i);
             button.addActionListener(cl);
@@ -151,30 +158,7 @@ public class CalcPanel extends JPanel {
         button = new JButton(".");
         button.addActionListener(dl);
         numPad.add(button, gbc);
-         
-        //createCommandButtons();
-        //createNumButtons();
+
         return numPad;
     }
-    
-   
-    
-    
-    
-    public void createCommandButtons(){
-        gbc = new GridBagConstraints(
-                0, 0, 1, 1, .0, .0,
-                GridBagConstraints.CENTER,
-                GridBagConstraints.BOTH, insets, 0, 0);
-        
-    }
-    
-    
-    
-    public void createNumButtons(){
-        
-    }
-    
-    
-    
 }
