@@ -22,7 +22,7 @@ public class Lab3 {
     public static void main(String[] args) {
         CalcFrame calc = new CalcFrame();
         calc.setLocationByPlatform(true);
-        calc.setVisible(false);
+        calc.setVisible(true);
         
         ColorPicker colorPicker = new ColorPicker();
         colorPicker.setLocationByPlatform(true);
