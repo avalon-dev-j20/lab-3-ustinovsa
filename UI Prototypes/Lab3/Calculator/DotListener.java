@@ -18,12 +18,9 @@ public class DotListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String input = e.getActionCommand();
-		if(Pattern.matches(("\\d+\\.{0}\\d*"), CalcPanel.display.getText())){
-                    CalcPanel.display.setText(CalcPanel.display.getText() + input);
-                } else {
-                }
-;
+        if (Pattern.matches(("\\d+\\.{0}\\d*"), CalcPanel.display.getText())) {
+            CalcPanel.display.setText(CalcPanel.display.getText() + input);
+        } 
     }
-    
-    
+
 }
