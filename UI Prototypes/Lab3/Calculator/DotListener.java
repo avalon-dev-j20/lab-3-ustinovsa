@@ -13,19 +13,17 @@ import java.util.regex.Pattern;
  *
  * @author Home
  */
-public class InputListener implements ActionListener{
+public class DotListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-       String input = e.getActionCommand();
-       
-		if((Pattern.matches("\\/|\\*|\\-|\\+|0|(0.0)", CalcPanel.display.getText()))){
-                    CalcPanel.display.setText("");
+        String input = e.getActionCommand();
+		if(Pattern.matches(("\\d+\\.{0}\\d*"), CalcPanel.display.getText())){
                     CalcPanel.display.setText(CalcPanel.display.getText() + input);
-                } else{
-                CalcPanel.display.setText(CalcPanel.display.getText() + input);
+                } else {
+                }
+;
     }
-   // CalcPanel.result = Double.parseDouble(CalcPanel.display.getText());    
-    }
+    
     
 }
